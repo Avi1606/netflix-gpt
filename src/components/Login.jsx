@@ -1,14 +1,24 @@
 import React from 'react';
 
 const Login = () => {
+
+    const [isSignedIn, setIsSignedIn] = React.useState(true);
+
+    const toogleSignIn = () => {
+        setIsSignedIn(!isSignedIn);
+    }
+
     return (
         <div className ="realtive">
+
           <div className="absolute flex justify-center items-center w-full z-10 inset-0">
               <form className="bg-black opacity-86 flex flex-col p-12 rounded max-w-md w-full mx-4">
-                  <h2 className="text-white text-2xl font-bold mb-6">Sign In</h2>
-                  <input className="bg-white p-3 my-3 rounded" type="text" placeholder="Email Address/Number" />
-                  <input className="bg-white p-3 my-3 rounded" type="password" placeholder="Password" />
-                  <button className="bg-red-600 text-white rounded py-3 mt-6 text-sm font-medium">Sign In</button>
+                  <h2 className="text-white text-2xl font-bold mb-6">{isSignedIn ? "Sign In" :"Sign Up"}</h2>
+                  <input className="bg-gray-650 p-3 my-3  placeholder-white text-white border-1 rounded-2l" type="text" placeholder="Email Address/Number" />
+                  <input className="bg-gray-650 p-3 my-3  placeholder-white text-white border-1 rounded-2l" type="password" placeholder="Password" />
+                  <button className="text-bold bg-red-600 text-white rounded py-3 mt-6 text-sm font-medium">{isSignedIn ? "Sign In" :"Sign Up"}</button>
+
+                  <p className ="text-gray-400 mx-1 my-5" >{!isSignedIn ? "Already registered. " :"New to Netflix? "}<span className="text-white cursor-pointer hover:brightness-30" onClick={toogleSignIn}>{isSignedIn ?"Sign In" : "Sign Up"}.</span></p>
               </form>
           </div>
             <div className="">
