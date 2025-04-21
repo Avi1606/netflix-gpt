@@ -1,11 +1,14 @@
 import Body from "./components/Body.jsx";
-import Login from "./components/Login.jsx"; // Import the Login component
+import Login from "./components/Login.jsx";
+import {Outlet} from "react-router-dom";
+import Header from "./components/Header.jsx"; // Import the Login component
 
 function App() {
     return (
         <div>
-            <Login />
+            <Header />
             <Body />
+            {/*<Outlet />*/}
         </div>
     )
 }
