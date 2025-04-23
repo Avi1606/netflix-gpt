@@ -1,15 +1,10 @@
-import React from 'react';
-import Header from "./Header.jsx";
+import Header from "./Header";
 
 const Browse = () => {
     return (
         <div>
-            <Header showFullHeader={true} />
-            <div className="pt-20">
-                {/* Content that should appear below header */}
-            </div>
+            <Header />
         </div>
     );
 };
-
 export default Browse;
