@@ -4,7 +4,7 @@ import Header from "./Header.jsx";
 const Browse = () => {
     return (
         <div>
-            <Header/>
+            <Header showFullHeader={true} />
             <div className="pt-20">
                 {/* Content that should appear below header */}
             </div>

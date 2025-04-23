@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "fire
 import {auth} from "../Utils/Firebase.jsx";
 import {useNavigate} from "react-router-dom";
 import handleFirebaseAuthError from "../Utils/handleFirebaseAuthError.jsx";
+import Header from "./Header.jsx";
 
 const Login = () => {
 
@@ -60,7 +61,7 @@ const Login = () => {
 
     return (
         <div className="relative">
-
+            <Header showFullHeader={false} />
             <div className="absolute flex justify-center items-center w-full z-10 inset-0">
                 <form className="bg-black opacity-86 flex flex-col p-15 rounded max-w-md w-full mx-7"
                       onSubmit={(e) => e.preventDefault()}>

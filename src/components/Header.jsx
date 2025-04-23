@@ -2,11 +2,11 @@ import { signOut } from "firebase/auth";
 import React from 'react';
 import { auth } from "../Utils/Firebase.jsx";
 import { useNavigate } from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import Logo from "./Logo.jsx";
 
-const Header = () => {
+const Header = ({ showFullHeader = true }) => {
     const navigate = useNavigate();
-
     const user = useSelector((store) => store.user);
 
     const handleSignOut = () => {
@@ -22,23 +22,21 @@ const Header = () => {
 
     return (
         <div className="">
-            <div className="absolute w-45 h-auto mx-7 my-6 z-4">
-                <img
-                    className="w-full h-auto"
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png"
-                    alt="logo"/>
-            </div>
-           <div className="flex justify-end items-center mt-2">
-               <h1 className="text-black font-bold mr-4">
-                   Welcome, {user?.displayName}
-               </h1>
-               <button
-                   onClick={handleSignOut}
-                   className="text-white p-2 m-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors flex items-center"
-               >
-                   Logout
-               </button>
-           </div>
+            <Logo />
+            
+            {showFullHeader && (
+                <div className="flex justify-end items-center mt-2">
+                    <h1 className="text-black font-bold mr-4">
+                        Welcome, {user?.displayName}
+                    </h1>
+                    <button
+                        onClick={handleSignOut}
+                        className="text-white p-2 m-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors flex items-center"
+                    >
+                        Logout
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
