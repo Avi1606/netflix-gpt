@@ -1,12 +1,17 @@
 import React, {useRef, useState} from 'react';
-import validation from "../Utils/Validation.jsx";
 import Validation from "../Utils/Validation.jsx";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../Utils/Firebase.jsx";
+import {useNavigate} from "react-router-dom";
+import handleFirebaseAuthError from "../Utils/handleFirebaseAuthError.jsx";
 
 const Login = () => {
 
     const [isSignedIn, setIsSignedIn] = useState(true);
 
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     const email = useRef(null);
     const password = useRef(null);
@@ -15,12 +20,42 @@ const Login = () => {
         setIsSignedIn(!isSignedIn);
     }
 
-    const toggleValidation = () =>{
-        //validation
-        const massage =Validation(email.current.value, password.current.value);
-        setError(massage);
+    const toggleValidation = () => {
+        // Validation
+        const message = Validation(email.current.value, password.current.value);
+        setError(message);
 
-    }
+        // Stop if validation failed
+        if (message) return;
+
+        if (!isSignedIn) {
+            // Sign up logic
+            createUserWithEmailAndPassword(
+                auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log('user', user);
+                    // You would typically navigate the user somewhere after signup
+                    navigate("/browse");
+                })
+                .catch((error) => {
+                    setError(handleFirebaseAuthError(error));
+                });
+        } else {
+            // Sign in logic needs to be implemented
+            signInWithEmailAndPassword(
+                auth, email.current.value, password.current.value)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log('user', user);
+                    // Navigate after successful login
+                    navigate("/browse");
+                })
+                .catch((error) => {
+                    setError(handleFirebaseAuthError(error));
+                });
+        }
+    };
 
 
     return (
@@ -28,7 +63,7 @@ const Login = () => {
 
             <div className="absolute flex justify-center items-center w-full z-10 inset-0">
                 <form className="bg-black opacity-86 flex flex-col p-15 rounded max-w-md w-full mx-7"
-                      onSubmit={(e) => e.isDefaultPrevented()}>
+                      onSubmit={(e) => e.preventDefault()}>
                     <h2 className="text-white text-2xl font-bold mb-6">{isSignedIn ? "Sign In" : "Sign Up"}</h2>
                     {!isSignedIn && (
                         <input className="bg-gray-950 p-3 my-6  placeholder-white text-white border-1 rounded-2l"
@@ -41,6 +76,7 @@ const Login = () => {
                            type="password" placeholder="Password"/>
                     <p className="text-red-600">{error}</p>
                     <button
+                        type="button"
                         className="cursor-pointer text-bold bg-red-600 text-white rounded py-3 mt-6 text-sm font-medium rounded-2l"
                         onClick={toggleValidation}>
                         {isSignedIn ? "Sign In" : "Sign Up"}</button>

@@ -1,13 +1,15 @@
 import Body from "./components/Body.jsx";
-import Header from "./components/Header.jsx"; // Import the Login component
+import Header from "./components/Header.jsx";
+import {Provider} from "react-redux";
+import appStore from "./App/AppStore.jsx";
 
 function App() {
     return (
-        <div>
+        <Provider store={appStore}>
             <Header />
             <Body />
             {/*<Outlet />*/}
-        </div>
+        </Provider>
     )
 }
 
