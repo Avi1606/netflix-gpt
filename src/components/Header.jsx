@@ -16,7 +16,6 @@ const Header = () => {
     const handleSignOut = () => {
         signOut(auth)
             .then(() => {
-                navigate("/");
             })
             .catch((error) => {
                 navigate("/error");
@@ -31,8 +30,7 @@ const Header = () => {
                     addUser({
                         uid: uid,
                         email: email,
-                        displayName: displayName,
-                        photoURL: photoURL,
+                        displayName: displayName
                     })
                 );
                 navigate("/browse");
