@@ -1,10 +1,10 @@
 import {onAuthStateChanged, signOut} from "firebase/auth";
 import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../utils/firebase";
+import { auth } from "../Utils/firebase.jsx";
 import {useEffect} from "react";
-import {addUser, removeUser} from "../App/UserSlice.jsx";
-import {Logo_URL} from "../Utils/Constanats.jsx";
+import {addUser, removeUser} from "../App/userSlice.jsx";
+import {Logo_URL} from "../Utils/Constants.jsx";
 
 const Header = () => {
 
@@ -44,25 +44,27 @@ const Header = () => {
     }, []);
 
     return (
-        <div className="absolute w-screen px-8 py-2 z-10 flex justify-between">
-            <img
-                className="w-44"
-                src={Logo_URL}
-                alt="logo"
-            />
-            {user && (
-                <div className="flex justify-end items-center mt-2">
-                    <h1 className="text-black font-bold mr-4">
-                        Welcome, {user?.displayName}
-                    </h1>
-                    <button
-                        onClick={handleSignOut}
-                        className="cursor-pointer text-white p-2 m-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors flex items-center"
-                    >
-                        Logout
-                    </button>
-                </div>
-            )}
+       <div className="absolute w-screen px-8 py-2 z-10 bg-gradient-to-b from-black to-transparent">
+            <div className="flex justify-between">
+                <img
+                    className="w-44"
+                    src={Logo_URL}
+                    alt="logo"
+                />
+                {user && (
+                    <div className="flex justify-end items-center mt-2">
+                        <h1 className="text-white font-bold mr-4">
+                            Welcome, {user?.displayName}
+                        </h1>
+                        <button
+                            onClick={handleSignOut}
+                            className="cursor-pointer text-white p-2 m-2 bg-red-600 rounded-lg hover:bg-red-700 transition-colors flex items-center"
+                        >
+                            Logout
+                        </button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

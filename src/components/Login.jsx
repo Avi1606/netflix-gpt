@@ -1,16 +1,16 @@
 import { useState, useRef } from "react";
 import Header from "./Header";
-import { checkValidData } from "../Utils/Validation.jsx";
+import { checkValidData } from "../Utils/validation.jsx";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
 
 } from "firebase/auth";
-import { auth } from "../utils/firebase";
+import { auth } from "../Utils/firebase.jsx";
 import { useNavigate } from "react-router-dom";
 import handleFirebaseAuthError from "../Utils/handleFirebaseAuthError.jsx";
-import {background_URL} from "../Utils/Constanats.jsx";
+import {background_URL} from "../Utils/Constants.jsx";
 
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
@@ -112,7 +112,7 @@ const Login = () => {
             <div className="">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/10 to-transparent"></div>
                 <img
-                    className="w-full bg-gradient-to-b from-black "
+                    className="w-full"
                     src={background_URL}
                     alt="background"/>
             </div>
