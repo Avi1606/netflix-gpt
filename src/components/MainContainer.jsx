@@ -12,16 +12,15 @@ const MainContainer = () => {
         return <ShimmerUI />;
     }
 
-    //console.log(movies);
-
     const mainMovie = movies[0];
+    //console.log(mainMovie.id);
 
     const {original_title, overview} = mainMovie;
 
     return (
         <div>
             <TitleContainer title={original_title} overview={overview} />
-            <VideoContainer />
+            <VideoContainer movieid={mainMovie.id}/>
         </div>
     );
 };
