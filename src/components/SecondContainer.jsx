@@ -8,7 +8,7 @@ const SecondContainer = () => {
     if (!movies) return null;
 
     return (
-        <div >
+        <div className="">
             <MovieList title="Now Playing" movies={movies} />
             <MovieList title="Now Playing" movies={movies} />
             <MovieList title="Now Playing" movies={movies} />

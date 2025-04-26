@@ -2,10 +2,10 @@ import React from 'react';
 
     const TitleContainer = ({title, overview}) => {
         return (
-            <div className="pt-[20%] px-12 absolute text-white bg-gradient-to-r from-black/70 w-screen aspect-video">
+            <div className="pt-[20%] px-12 absolute text-white w-screen aspect-video">
                 <h1 className="text-5xl font-bold mb-4">{title}</h1>
                 <p className="w-1/2 text-lg mb-6">{overview}</p>
-                <div className="flex gap-4">
+                <div className="flex gap-4 ">
                     <button className="cursor-pointer bg-white text-black py-2 px-8 text-lg font-semibold rounded-md hover:bg-opacity-30 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 mr-2">
                             <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
