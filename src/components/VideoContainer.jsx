@@ -5,6 +5,7 @@ import React from 'react';
 
          const VideoContainer = ({movieid}) => {
              const trailerFetch = useSelector(store => store.movies.trailerVideo);
+
              useMovieVideo(movieid);
 
              return !trailerFetch ? <ShimmerUI />

@@ -7,18 +7,16 @@ import ShimmerUI from "../Utils/ShimmerUI.jsx";
 const MainContainer = () => {
     const movies = useSelector(store => store.movies.nowPlayingMovies);
 
-
     if(!movies) {
         return <ShimmerUI />;
     }
 
     const mainMovie = movies[0];
-    //console.log(mainMovie.id);
 
     const {original_title, overview} = mainMovie;
 
     return (
-        <div>
+        <div className="relative w-screen aspect-video">
             <TitleContainer title={original_title} overview={overview} />
             <VideoContainer movieid={mainMovie.id}/>
         </div>
