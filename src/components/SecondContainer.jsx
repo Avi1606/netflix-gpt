@@ -22,10 +22,10 @@ const SecondContainer = () => {
 
     return (
         <div className="-mt-35 bg-black">
-            <MovieList title="Now Playing" movies={nowPlayingMovies} />
-            <MovieList title="Top Rated" movies={topRatedMovies} />
-            <MovieList title="Upcoming" movies={upComingMovies} />
             <MovieList title="Popular Movies" movies={popularMovies} />
+            <MovieList title="Now Playing" movies={nowPlayingMovies} />
+            <MovieList title="Upcoming" movies={upComingMovies} />
+            <MovieList title="Top Rated" movies={topRatedMovies} />
              </div>
     );
 };
