@@ -4,30 +4,25 @@ import { useSelector } from "react-redux";
 
 const SecondContainer = () => {
     const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies);
-
     const popularMovies = useSelector(store => store.movies.popularMovies);
-
     const topRatedMovies = useSelector(store => store.movies.topRatedMovies);
-
     const upComingMovies = useSelector(store => store.movies.upComingMovies);
 
-    if (!nowPlayingMovies) return null;
-
-    if(!popularMovies) return null;
-
-    if(!topRatedMovies) return null;
-
-    if(!upComingMovies) return null;
-
+    if (!nowPlayingMovies || !popularMovies || !topRatedMovies || !upComingMovies) return null;
 
     return (
-        <div className="-mt-35 bg-black">
-            <MovieList title="Popular Movies" movies={popularMovies} />
-            <MovieList title="Now Playing" movies={nowPlayingMovies} />
-            <MovieList title="Upcoming" movies={upComingMovies} />
-            <MovieList title="Top Rated" movies={topRatedMovies} />
-             </div>
+
+        <div className=" ">
+            <div className="relative -mt-20 z-10">
+                <MovieList title="Popular Movies" movies={popularMovies}/>
+                <MovieList title="Now Playing" movies={nowPlayingMovies}/>
+                <MovieList title="Upcoming" movies={upComingMovies}/>
+                <MovieList title="Top Rated" movies={topRatedMovies}/>
+            </div>
+        </div>
+
     );
+
 };
 
 export default SecondContainer;
