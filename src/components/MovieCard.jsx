@@ -3,7 +3,7 @@ import {MOVIEPOSTER_URL} from "../Utils/Constants.jsx";
 
 const MovieCard = ({imageID}) => {
     return (
-        <div>
+        <div className ="">
             <img src={MOVIEPOSTER_URL + imageID} alt="Movie poster"/>
 
         </div>

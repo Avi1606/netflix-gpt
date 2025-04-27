@@ -10,7 +10,7 @@ import React from 'react';
 
              return !trailerFetch ? <ShimmerUI />
                  : (
-                 <div className="w-screen absolute ">
+                 <div className="absolute ">
                      <iframe
                          className="w-screen aspect-video "
                          src={"https://www.youtube.com/embed/"+trailerFetch.key+"?autoplay=1&mute=1&controls=0&showinfo=0&loop=1&playlist="+trailerFetch.key}
