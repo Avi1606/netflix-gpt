@@ -17,7 +17,7 @@ import React from 'react';
                          title="YouTube video player"
                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                          referrerPolicy="strict-origin-when-cross-origin"
-                        style={{position: 'absolute', top: -30, left: 0, zIndex: -10}}
+                        style={{position: 'absolute', top: -85, left: 0, zIndex: -10}}
                      ></iframe>
                      {/*<div className="absolute inset-0 bg-gradient-to-r from-black/28"></div>*/}
                  </div>

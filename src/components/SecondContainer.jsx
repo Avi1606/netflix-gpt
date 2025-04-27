@@ -11,18 +11,19 @@ const SecondContainer = () => {
     if (!nowPlayingMovies || !popularMovies || !topRatedMovies || !upComingMovies) return null;
 
     return (
+        <div className="relative">
+            {/* Netflix-style gradient overlay */}
+            <div className="absolute top-0 left-0 w-full h-[150px] bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-black -mt-[150px] z-10"></div>
 
-        <div className=" ">
-            <div className="relative -mt-20 z-10">
+            {/* Movie lists with black background */}
+            <div className="relative bg-black -mt-30 z-20 pt-10">
                 <MovieList title="Popular Movies" movies={popularMovies}/>
                 <MovieList title="Now Playing" movies={nowPlayingMovies}/>
                 <MovieList title="Upcoming" movies={upComingMovies}/>
                 <MovieList title="Top Rated" movies={topRatedMovies}/>
             </div>
         </div>
-
     );
-
 };
 
 export default SecondContainer;
