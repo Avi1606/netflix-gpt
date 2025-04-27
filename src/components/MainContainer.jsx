@@ -11,12 +11,13 @@ const MainContainer = () => {
         return <ShimmerUI />;
     }
 
+
     const mainMovie = movies[0];
 
     const {original_title, overview} = mainMovie;
 
     return (
-        <div className="relative w-screen aspect-video">
+        <div className="relative w-full aspect-video">
             <TitleContainer title={original_title} overview={overview} />
             <VideoContainer movieid={mainMovie.id}/>
         </div>
