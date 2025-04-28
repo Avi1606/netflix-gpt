@@ -61,7 +61,7 @@ const Header = () => {
                     <div className="flex justify-end items-center mt-2 gap-3">
                         <button onClick={handleGptSearch}
                                 className="
-                            text-white px-2 py-1.5 mx-4 bg-red-600 rounded-md
+                            text-white px-2 py-1.5 mx-3 bg-red-600 rounded-2xl cursor-pointer
                             hover:bg-red-700 transition-colors"
                         >
                             GPTSearch
@@ -69,7 +69,7 @@ const Header = () => {
                         <div className="relative group">
                             <div className="flex items-center gap-2 cursor-pointer text-white">
                                 <span className="font-bold">
-                                    Hey, {currentDisplayName || "User"}
+                                    {currentDisplayName || "User"}
                                 </span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      className="h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
@@ -79,11 +79,11 @@ const Header = () => {
                                 </svg>
                             </div>
                             <div
-                                className="absolute right-0 mt-2 w-20 bg-black/90 border rounded-md shadow-lg overflow-hidden scale-0 origin-top-right group-hover:scale-100 transition-all duration-200">
-                                <div className="py-1">
+                                className="absolute right-0 mt-2 w-20 bg-black/90 rounded-2xl shadow-lg overflow-hidden scale-0 origin-top-right group-hover:scale-100 transition-all duration-200">
+                                <div className="py-0">
                                     <button
                                         onClick={handleSignOut}
-                                        className="w-full text-left px-3 py-1.5 text-sm text-white hover:bg-red-600 transition-colors"
+                                        className="w-full text-left px-4 py-2 text-sm text-white hover:bg-red-600 transition-colors rounded-3xl"
                                     >
                                         Logout
                                     </button>

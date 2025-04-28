@@ -1,13 +1,13 @@
 
 import React from 'react';
+import GptSearchBar from "./GptSearchBar.jsx";
+import GptMovieSuggestions from "./GptMovieSuggestions.jsx";
 
 const GptSearchPage = () => {
     return (
-        <div className="pt-24 min-h-screen ">
-            <div className="px-8">
-                <p className="text-black text-2xl">Gpt Search page</p>
-                {/* Your GPT search UI components here */}
-            </div>
+        <div className="pt-40 min-h-screen ">
+            <GptSearchBar />
+            <GptMovieSuggestions />
         </div>
     );
 };

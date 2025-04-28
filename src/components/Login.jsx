@@ -5,11 +5,9 @@ import { checkValidData } from "../Utils/validation.jsx";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    updateProfile,
-    getAuth,
+    updateProfile
 } from "firebase/auth";
 import { auth } from "../Utils/firebase.jsx";
-import { useNavigate } from "react-router-dom";
 import handleFirebaseAuthError from "../Utils/handleFirebaseAuthError.jsx";
 import { background_URL } from "../Utils/Constants.jsx";
 import { useDispatch } from "react-redux";
@@ -19,7 +17,6 @@ const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const name = useRef(null);
