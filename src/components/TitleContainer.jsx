@@ -4,7 +4,7 @@ import React from 'react';
         return (
             <div className="pt-[20%] px-12 absolute text-white w-screen aspect-video">
                 <h1 className="text-5xl font-bold mb-4">{title}</h1>
-                <p className="w-1/2 text-lg mb-6">{overview}</p>
+                <p className="w-1/2 text-lg mb-8">{overview}</p>
                 <div className="flex gap-4 ">
                     <button className="cursor-pointer bg-white text-black py-2 px-8 text-lg font-semibold rounded-md hover:bg-opacity-30 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 mr-2">
