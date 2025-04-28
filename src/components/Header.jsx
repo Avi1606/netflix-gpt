@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Utils/firebase.jsx";
 import {useEffect} from "react";
-import {addUser, removeUser} from "../App/userSlice.jsx";
+import {addUser, removeUser} from "../App/userSlice.js";
 import {Logo_URL} from "../Utils/Constants.jsx";
 
 const Header = () => {

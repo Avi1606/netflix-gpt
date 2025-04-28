@@ -1,5 +1,5 @@
 import {API_OPTIONS} from "../Utils/Constants.jsx";
-import {addTrailerVideo} from "../App/moviesSlice.jsx";
+import {addTrailerVideo} from "../App/moviesSlice.js";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 

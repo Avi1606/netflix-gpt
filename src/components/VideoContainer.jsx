@@ -10,14 +10,14 @@ import React from 'react';
 
              return !trailerFetch ? <ShimmerUI />
                  : (
-                 <div className="absolute">
+                 <div className="absolute w-screen">
                      <iframe
                          className="w-screen aspect-video bg-gradient-to-r from-black "
                          src={"https://www.youtube.com/embed/"+trailerFetch.key+"?autoplay=1&mute=1&controls=0&showinfo=0&loop=1&playlist="+trailerFetch.key}
                          title="YouTube video player"
-                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
                          referrerPolicy="strict-origin-when-cross-origin"
-                        style={{position: 'absolute', top: -85, left: 0, zIndex: -10}}
+                        style={{position: 'absolute', top: -95, left: 0, zIndex: -10}}
                      ></iframe>
                      {/*<div className="absolute inset-0 bg-gradient-to-r from-black/28"></div>*/}
                  </div>

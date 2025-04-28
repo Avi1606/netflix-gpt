@@ -1,7 +1,7 @@
 import {API_OPTIONS} from "../Utils/Constants.jsx";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import { addUpComingMovies} from "../App/moviesSlice.jsx";
+import { addUpComingMovies} from "../App/moviesSlice.js";
 
 const useUpcomingMovies = () => {
 
