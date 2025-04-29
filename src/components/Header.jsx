@@ -13,7 +13,7 @@ const Header = () => {
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const [isUserLoaded, setIsUserLoaded] = useState(false);
-    const language = useSelector((store) => store.gpt.showGptPage);
+    const gptPage = useSelector((store) => store.gpt.showGptPage);
 
 
     const handleLanguageChange = (e) =>{dispatch(setLanguage(e.target.value));
@@ -66,7 +66,7 @@ const Header = () => {
                 />
                 {user && (
                     <div className="flex justify-end items-center mt-2 gap-3">
-                        {language && (<div>
+                        {gptPage && (<div>
                             <select onChange={handleLanguageChange}
                                 className="bg-red-600 text-white m-2 p-2 rounded-2xl cursor-pointer hover:bg-red-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 appearance-none">
                                 {languages.map((languages) =>
@@ -82,7 +82,7 @@ const Header = () => {
                             text-white px-2 py-1.5 mx-3 bg-red-600 rounded-2xl cursor-pointer
                             hover:bg-red-700 transition-colors"
                         >
-                            GPTSearch
+                            {gptPage ? "Homepage" : "GPTSearch"}
                         </button>
                         <div className="relative group">
                             <div className="flex items-center gap-2 cursor-pointer text-white">
