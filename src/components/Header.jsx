@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../Utils/firebase.jsx";
 import { useEffect, useState } from "react";
 import { addUser, removeUser } from "../App/userSlice.js";
-import { Logo_URL } from "../Utils/Constants.jsx";
+import {languages, Logo_URL} from "../Utils/Constants.jsx";
 import { setShowGptPage } from "../App/useGptSlice.js";
 
 const Header = () => {
@@ -12,6 +12,8 @@ const Header = () => {
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const [isUserLoaded, setIsUserLoaded] = useState(false);
+
+    const language = useSelector((store) => store.gpt.showGptPage);
 
     const handleSignOut = () => {
         signOut(auth)
@@ -59,6 +61,17 @@ const Header = () => {
                 />
                 {user && (
                     <div className="flex justify-end items-center mt-2 gap-3">
+                        {language && (<div>
+                            <select
+                                className="bg-red-600 text-white m-2 p-2 rounded-2xl cursor-pointer hover:bg-red-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 appearance-none">
+                                {languages.map((languages) =>
+                                    <option key={languages.identifier} value={languages.identifier}
+                                            className="bg-gray-800 hover:bg-gray-700">
+                                        {languages.name}
+                                    </option>
+                                )}
+                            </select>
+                        </div>)}
                         <button onClick={handleGptSearch}
                                 className="
                             text-white px-2 py-1.5 mx-3 bg-red-600 rounded-2xl cursor-pointer

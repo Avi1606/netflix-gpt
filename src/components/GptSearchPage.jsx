@@ -8,7 +8,7 @@ const GptSearchPage = () => {
         <div>
             <div>
                 <img src={background_URL} alt="background"
-                     className="absolute w-full h-full object-cover -z-30 gradient-to-t from-black"/>;
+                     className="absolute w-full h-full object-cover -z-30 bg-gradient-to-b from-black"/>;
             </div>
             <div className="pt-40 min-h-screen ">
                 <GptSearchBar/>
