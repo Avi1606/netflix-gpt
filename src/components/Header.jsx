@@ -2,18 +2,23 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Utils/firebase.jsx";
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { addUser, removeUser } from "../App/userSlice.js";
 import {languages, Logo_URL} from "../Utils/Constants.jsx";
 import { setShowGptPage } from "../App/useGptSlice.js";
+import {setLanguage} from "../App/useLanguageSlice.js";
 
 const Header = () => {
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const [isUserLoaded, setIsUserLoaded] = useState(false);
-
     const language = useSelector((store) => store.gpt.showGptPage);
+
+
+    const handleLanguageChange = (e) =>{dispatch(setLanguage(e.target.value));
+    }
+
 
     const handleSignOut = () => {
         signOut(auth)
@@ -62,7 +67,7 @@ const Header = () => {
                 {user && (
                     <div className="flex justify-end items-center mt-2 gap-3">
                         {language && (<div>
-                            <select
+                            <select onChange={handleLanguageChange}
                                 className="bg-red-600 text-white m-2 p-2 rounded-2xl cursor-pointer hover:bg-red-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 appearance-none">
                                 {languages.map((languages) =>
                                     <option key={languages.identifier} value={languages.identifier}
