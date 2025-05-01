@@ -17,3 +17,4 @@ export const languages = [
     {identifier: "hindi", name: "Hindi"},
     {identifier: "spanish", name: "Spanish"},
 ];
+
