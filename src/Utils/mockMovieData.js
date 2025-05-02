@@ -61,6 +61,37 @@ export const actionMovies = {
     movieResults: [
         [
             {
+                id: 9,
+                title: "John Wick",
+                poster_path: "/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg",
+                overview: "An ex-hit-man comes out of retirement to track down the gangsters that killed his dog and took everything from him.",
+                release_date: "2014-10-24",
+                vote_average: 7.4
+            }
+        ],
+
+        [
+            {
+                id: 7,
+                title: "The Matrix",
+                poster_path: "/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+                overview: "A computer programmer discovers that reality as he knows it is a simulation created by machines, and joins a rebellion to break free from the system.",
+                release_date: "1999-03-31",
+                vote_average: 8.7
+            }
+        ],
+        [
+            {
+                id: 8,
+                title: "Mad Max: Fury Road",
+                poster_path: "/8tZYtuWezp8JbcsvHYO0O46tFbo.jpg",
+                overview: "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
+                release_date: "2015-05-13",
+                vote_average: 8.1
+            }
+        ],
+        [
+            {
                 id: 6,
                 title: "Die Hard",
                 poster_path: "/yFihWxQcmqcaBR31QM6Y8gT6aYV.jpg",
@@ -69,8 +100,7 @@ export const actionMovies = {
                 vote_average: 7.9
             }
         ],
-        // Add data for other action movies...
-        // For brevity, I'll skip the full details for the other movies
+
     ]
 };
 
