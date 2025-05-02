@@ -149,7 +149,7 @@ const GptSearchBar = () => {
               disabled={isLoading}
               className="col-span-9 p-4 bg-gray-800 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
               placeholder={languageConstants[langKey].placeholder}
-              defaultValue={"movies"}
+              defaultValue={"action movies"}
           />
           <button
               className={`col-span-3 py-3 px-4 ${isLoading ? "bg-gray-600" : "bg-red-600 hover:bg-red-700"} text-white font-semibold rounded-lg shadow transition-colors duration-300 transform hover:scale-105 focus:outline-none flex items-center justify-center`}
