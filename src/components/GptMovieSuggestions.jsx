@@ -1,34 +1,38 @@
+// GptMovieSuggestions.jsx
 import React from 'react';
+import MovieList from "./MovieList.jsx";
+import { useSelector } from "react-redux";
 
 const GptMovieSuggestions = () => {
+    const { movieResults, movieNames } = useSelector((store) => store.gpt);
+
+    if (!movieNames) return null;
+
     return (
-        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-6 md:py-8 lg:py-10 
-                      bg-black bg-opacity-80 
-                      rounded-lg shadow-lg
-                      mt-4 sm:mt-6 md:mt-8
-                      mx-auto max-w-7xl">
-            <h2 className="text-xl sm:text-2xl md:text-3xl text-white font-bold mb-4 md:mb-6">
-                Your Recommended Movies
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {/* Movie suggestions will appear here */}
-                <div className="bg-gray-800 rounded-lg p-4 md:p-5 h-40 animate-pulse flex flex-col justify-between">
-                    <div className="h-5 bg-gray-700 rounded w-3/4"></div>
-                    <div className="h-4 bg-gray-700 rounded w-1/2"></div>
-                    <div className="h-8 bg-red-700 rounded w-1/3"></div>
-                </div>
-                
-                <div className="bg-gray-800 rounded-lg p-4 md:p-5 h-40 animate-pulse flex flex-col justify-between">
-                    <div className="h-5 bg-gray-700 rounded w-3/4"></div>
-                    <div className="h-4 bg-gray-700 rounded w-1/2"></div>
-                    <div className="h-8 bg-red-700 rounded w-1/3"></div>
-                </div>
-                
-                <div className="bg-gray-800 rounded-lg p-4 md:p-5 h-40 animate-pulse flex flex-col justify-between">
-                    <div className="h-5 bg-gray-700 rounded w-3/4"></div>
-                    <div className="h-4 bg-gray-700 rounded w-1/2"></div>
-                    <div className="h-8 bg-red-700 rounded w-1/3"></div>
+        <div className="relative z-10">
+            {/* REMOVED the fixed black overlay that was causing double-darkening */}
+
+            {/* Content container with proper scrolling behavior */}
+            <div className="max-w-[90%] mx-auto py-6 px-4 sm:px-6 md:px-8 rounded-xl
+                            backdrop-blur-sm bg-black/60 border border-gray-800 shadow-2xl">
+                <h1 className="text-2xl md:text-3xl font-bold text-white mb-6 pb-2 border-b border-gray-700">
+                    Your Personalized Movie Suggestions
+                </h1>
+
+                <div className="space-y-8">
+                    {movieNames.map((movieName, index) => (
+                        <div key={movieName} className="movie-category">
+                            <MovieList
+                                title={movieName}
+                                movies={movieResults[index]}
+                            />
+
+                            {/* Add subtle divider between categories except for the last one */}
+                            {index < movieNames.length - 1 && (
+                                <div className="w-[90%] mx-auto h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mt-6" />
+                            )}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
