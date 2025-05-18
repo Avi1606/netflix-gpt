@@ -12,7 +12,7 @@ const Header = () => {
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
-    const [ setIsUserLoaded] = useState(false);
+    const [isUserLoaded, setIsUserLoaded] = useState(false);
     const gptPage = useSelector((store) => store.gpt.showGptPage);
 
     const handleLanguageChange = (e) =>{
