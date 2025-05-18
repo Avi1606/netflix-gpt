@@ -12,6 +12,7 @@ const MainContainer = () => {
     }
 
     const mainMovie = movies[0];
+
     const {original_title, overview} = mainMovie;
 
     return (
