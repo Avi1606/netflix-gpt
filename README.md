@@ -2,7 +2,7 @@
 
 A modern React application for discovering and exploring movies with a responsive search interface.
 
-- Try Now - https://netflixgpt-e41b5.web.app/
+- Try Now -->  https://netflix-gpt-seven-alpha.vercel.app/
 
 ## 📋 Features
 
