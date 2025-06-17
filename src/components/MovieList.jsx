@@ -142,7 +142,7 @@ const MovieList = ({title, movies}) => {
             <div className="relative overflow-hidden">
                 <div
                     ref={scrollContainerRef}
-                    className="flex overflow-x-auto overflow-y-hidden py-2 sm:py-4 px-1 sm:px-2
+                    className="movie-list flex overflow-x-auto overflow-y-hidden py-2 sm:py-4 px-1 sm:px-2
                               scrollbar-hide
                               [scrollbar-width:none] [-ms-overflow-style:none]
                               [&::-webkit-scrollbar]:hidden
