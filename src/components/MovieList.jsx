@@ -96,23 +96,24 @@ const MovieList = ({title, movies}) => {
     if (!movies) return null;
 
     return (
-        <div className="relative px-2 sm:px-4 md:px-6 lg:px-8 mb-6 md:mb-8 lg:mb-10 group">
-            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 md:mb-3 pl-1">{title}</h1>
+        <div className="relative px-2 sm:px-4 md:px-6 lg:px-8 mb-4 sm:mb-6 md:mb-8 lg:mb-10 group">
+            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-2 md:mb-3 pl-1">{title}</h1>
             
             {/* Left scroll arrow */}
             {showLeftArrow && (
                 <button 
                     onClick={() => handleScroll('left')}
                     className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20
-                          w-8 h-12 sm:w-10 sm:h-16 md:w-12 md:h-20 
+                          w-6 h-10 sm:w-8 sm:h-12 md:w-10 md:h-16 lg:w-12 lg:h-20 
                           bg-black/50 
                           flex items-center justify-center
                           opacity-0 group-hover:opacity-100
                           transition-opacity duration-300
                           hover:bg-black/80
-                          rounded-r-md"
+                          rounded-r-md
+                          touch-manipulation"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
                         <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
                     </svg>
                 </button>
@@ -123,15 +124,16 @@ const MovieList = ({title, movies}) => {
                 <button 
                     onClick={() => handleScroll('right')}
                     className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20
-                          w-8 h-12 sm:w-10 sm:h-16 md:w-12 md:h-20 
+                          w-6 h-10 sm:w-8 sm:h-12 md:w-10 md:h-16 lg:w-12 lg:h-20 
                           bg-black/50 
                           flex items-center justify-center
                           opacity-0 group-hover:opacity-100
                           transition-opacity duration-300
                           hover:bg-black/80
-                          rounded-l-md"
+                          rounded-l-md
+                          touch-manipulation"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
                         <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
                     </svg>
                 </button>
@@ -140,10 +142,11 @@ const MovieList = ({title, movies}) => {
             <div className="relative overflow-hidden">
                 <div
                     ref={scrollContainerRef}
-                    className="flex overflow-x-auto overflow-y-hidden py-4 px-2
+                    className="flex overflow-x-auto overflow-y-hidden py-2 sm:py-4 px-1 sm:px-2
                               scrollbar-hide
                               [scrollbar-width:none] [-ms-overflow-style:none]
-                              [&::-webkit-scrollbar]:hidden"
+                              [&::-webkit-scrollbar]:hidden
+                              touch-pan-x"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                     onTouchStart={() => setIsPaused(true)}

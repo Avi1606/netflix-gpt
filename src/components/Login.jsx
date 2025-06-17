@@ -1,4 +1,3 @@
-
 import { useState, useRef } from "react";
 import Header from "./Header";
 import { checkValidData } from "../Utils/validation.jsx";
@@ -81,50 +80,52 @@ const Login = () => {
     };
 
     return (
-        <div className="relative">
+        <div className="relative min-h-screen">
             <Header showFullHeader={false} />
             <div className="absolute flex justify-center items-center w-full z-10 inset-0">
-                <form className="bg-black opacity-86 flex flex-col p-15 rounded max-w-md w-full mx-7"
+                <form className="bg-black/80 flex flex-col p-4 sm:p-6 md:p-8 rounded-lg max-w-md w-[90%] sm:w-[80%] md:w-[70%] mx-auto"
                       onSubmit={(e) => e.preventDefault()}>
-                    <h2 className="text-white text-2xl font-bold mb-6">{isSignInForm ? "Sign In" : "Sign Up"}</h2>
+                    <h2 className="text-white text-xl sm:text-2xl font-bold mb-4 sm:mb-6">{isSignInForm ? "Sign In" : "Sign Up"}</h2>
                     {!isSignInForm && (
                         <input
                             ref={name}
-                            className="bg-gray-950 p-3 my-6 placeholder-white text-white border-1 rounded-2l"
+                            className="bg-gray-950 p-2 sm:p-3 my-3 sm:my-4 placeholder-white text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                             type="text"
                             placeholder="Name"
                         />
                     )}
                     <input
                         ref={email}
-                        className="bg-gray-950 p-3 my-3 placeholder-white text-white border-1 rounded-2l"
+                        className="bg-gray-950 p-2 sm:p-3 my-3 placeholder-white text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         type="text"
                         placeholder="Email or mobile number"
+                        defaultValue="testing@gmail.com"
                     />
                     <input
                         ref={password}
-                        className="bg-gray-950 p-3 my-3 placeholder-white text-white border-1 rounded-2l"
+                        className="bg-gray-950 p-2 sm:p-3 my-3 placeholder-white text-white border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                         type="password"
                         placeholder="Password"
+                        defaultValue="@Test123"
                     />
-                    {errorMessage && <p className="text-red-600">{errorMessage}</p>}
+                    {errorMessage && <p className="text-red-600 text-sm sm:text-base">{errorMessage}</p>}
                     <button
                         type="button"
                         disabled={isLoading}
-                        className="cursor-pointer text-bold bg-red-600 text-white rounded py-3 mt-6 text-sm font-medium rounded-2l disabled:bg-red-400"
+                        className="cursor-pointer text-bold bg-red-600 text-white rounded-md py-2 sm:py-3 mt-4 sm:mt-6 text-sm sm:text-base font-medium hover:bg-red-700 transition-colors disabled:bg-red-400"
                         onClick={handleButtonClick}>
                         {isLoading ? "Please wait..." : (isSignInForm ? "Sign In" : "Sign Up")}
                     </button>
 
-                    <p className="text-gray-400 mx-1 my-9">{!isSignInForm ? "Already registered. " : "New to Netflix ? "}<span
+                    <p className="text-gray-400 mx-1 my-6 sm:my-8 text-sm sm:text-base">{!isSignInForm ? "Already registered. " : "New to Netflix ? "}<span
                         className="text-white cursor-pointer hover:brightness-30"
                         onClick={toggleSignInForm}>{!isSignInForm ? "Sign In" : "Sign Up"}.</span></p>
                 </form>
             </div>
-            <div className="">
+            <div className="absolute inset-0 -z-10">
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-black/10 to-transparent"></div>
                 <img
-                    className="w-full"
+                    className="w-full h-full object-cover"
                     src={background_URL}
                     alt="background"/>
             </div>

@@ -138,26 +138,26 @@ const GptSearchBar = () => {
 
 
   return (
-      <div className="pt-[35%] md:pt-[0.1%] flex justify-center flex-col items-center">
+      <div className="pt-[25%] sm:pt-[20%] md:pt-[15%] lg:pt-[10%] flex justify-center flex-col items-center">
         <form
-            className="w-full md:w-1/2 bg-black bg-opacity-80 rounded-lg shadow-lg p-4 grid grid-cols-12 gap-2 border border-gray-700"
+            className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-1/2 bg-black bg-opacity-80 rounded-lg shadow-lg p-3 sm:p-4 grid grid-cols-12 gap-2 border border-gray-700"
             onSubmit={(e) => e.preventDefault()}
         >
           <input
               ref={searchText}
               type="text"
               disabled={isLoading}
-              className="col-span-9 p-4 bg-gray-800 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300"
+              className="col-span-9 p-2 sm:p-3 md:p-4 bg-gray-800 text-white rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
               placeholder={languageConstants[langKey].placeholder}
               defaultValue={"action movies"}
           />
           <button
-              className={`col-span-3 py-3 px-4 ${isLoading ? "bg-gray-600" : "bg-red-600 hover:bg-red-700"} text-white font-semibold rounded-lg shadow transition-colors duration-300 transform hover:scale-105 focus:outline-none flex items-center justify-center`}
+              className={`col-span-3 py-2 sm:py-3 px-2 sm:px-4 ${isLoading ? "bg-gray-600" : "bg-red-600 hover:bg-red-700"} text-white font-semibold rounded-lg shadow transition-colors duration-300 transform hover:scale-105 focus:outline-none flex items-center justify-center text-sm sm:text-base`}
               onClick={handleGptSearchClick}
               disabled={isLoading}
           >
             {isLoading ? (
-                <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-4 h-4 sm:w-6 sm:h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
             ) : (
                 languageConstants[langKey].search
             )}
@@ -165,7 +165,7 @@ const GptSearchBar = () => {
         </form>
 
         {error && (
-            <div className="mt-4 p-3 bg-red-500 text-white rounded-md text-sm">
+            <div className="mt-4 p-2 sm:p-3 bg-red-500 text-white rounded-md text-xs sm:text-sm w-[90%] sm:w-[80%] md:w-[70%] lg:w-1/2">
               {error}
             </div>
         )}

@@ -13,10 +13,10 @@ const SecondContainer = () => {
     return (
         <div className="relative">
             {/* Netflix-style gradient overlay */}
-            <div className="absolute top-0 left-0 w-full h-[150px] bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-black -mt-[150px] z-10"></div>
+            <div className="absolute top-0 left-0 w-full h-[100px] sm:h-[120px] md:h-[150px] bg-gradient-to-b from-transparent via-[rgba(0,0,0,0.4)] to-black -mt-[100px] sm:-mt-[120px] md:-mt-[150px] z-10"></div>
 
             {/* Movie lists with black background */}
-            <div className="relative bg-black -mt-30 z-20 pt-10">
+            <div className="relative bg-black -mt-[100px] sm:-mt-[120px] md:-mt-[150px] z-20 pt-6 sm:pt-8 md:pt-10">
                 <MovieList title="Popular Movies" movies={popularMovies}/>
                 <MovieList title="Now Playing" movies={nowPlayingMovies}/>
                 <MovieList title="Upcoming" movies={upComingMovies}/>
