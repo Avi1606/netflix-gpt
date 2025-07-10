@@ -35,106 +35,106 @@ const GptSearchBar = () => {
     }
   };
 
-  // const handleGptSearchClick = async () => {
-  //   // Reset any previous errors
-  //   setError(null);
-  //   setIsLoading(true);
-  //
-  //   try {
-  //     // Validate input
-  //     if (!searchText.current?.value?.trim()) {
-  //       setError("Please enter a search term");
-  //       return;
-  //     }
-  //
-  //     const gptQuery =
-  //         "Act as a Movie Recommendation system and suggest some movies for the query : " +
-  //         searchText.current.value +
-  //         ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
-  //
-  //     // Make OpenAI API call
-  //     const gptResults = await openai.chat.completions.create({
-  //       messages: [{ role: "user", content: gptQuery }],
-  //       model: "gpt-3.5-turbo",
-  //     });
-  //
-  //     // Validate OpenAI response
-  //     if (!gptResults.choices || gptResults.choices.length === 0) {
-  //       throw new Error("No results returned from OpenAI");
-  //     }
-  //
-  //     // Process movie names
-  //     const gptMovies = gptResults.choices[0]?.message?.content.split(",").map(movie => movie.trim());
-  //
-  //     if (!gptMovies || gptMovies.length === 0) {
-  //       throw new Error("No movie recommendations found");
-  //     }
-  //
-  //     // Search for each movie in TMDB
-  //     const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
-  //     const tmdbResults = await Promise.all(promiseArray);
-  //
-  //     // Filter out empty results
-  //     const validResults = tmdbResults.map(results =>
-  //         results && results.length > 0 ? results : null
-  //     );
-  //
-  //     if (validResults.every(result => result === null)) {
-  //       throw new Error("No movie data found for the recommendations");
-  //     }
-  //
-  //     // Dispatch to Redux store
-  //     dispatch(
-  //         addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
-  //     );
-  //
-  //   } catch (error) {
-  //     console.error("Error in GPT search:", error);
-  //     setError(error.message || "An error occurred while searching for movies");
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
   const handleGptSearchClick = async () => {
     // Reset any previous errors
     setError(null);
-
-    // Check if the search text is empty
-    if (!searchText.current?.value?.trim()) {
-      setError("Please enter a search term");
-      return;
-    }
-
-    // Set loading state
     setIsLoading(true);
-
+  
     try {
-      // Simulate API delay for realistic testing
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Get mock data based on search query
-      let mockData;
-      const query = searchText.current.value.toLowerCase();
-
-      if (query.includes("action")) {
-        mockData = actionMovies;
-      } else if (query.includes("comedy")) {
-        mockData = comedyMovies;
-      } else {
-
-        mockData = mockMovieResults;
+      // Validate input
+      if (!searchText.current?.value?.trim()) {
+        setError("Please enter a search term");
+        return;
       }
-
-
-      dispatch(addGptMovieResult(mockData));
-
+  
+      const gptQuery =
+          "Act as a Movie Recommendation system and suggest some movies for the query : " +
+          searchText.current.value +
+          ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
+  
+      // Make OpenAI API call
+      const gptResults = await openai.chat.completions.create({
+        messages: [{ role: "user", content: gptQuery }],
+        model: "gpt-3.5-turbo",
+      });
+  
+      // Validate OpenAI response
+      if (!gptResults.choices || gptResults.choices.length === 0) {
+        throw new Error("No results returned from OpenAI");
+      }
+  
+      // Process movie names
+      const gptMovies = gptResults.choices[0]?.message?.content.split(",").map(movie => movie.trim());
+  
+      if (!gptMovies || gptMovies.length === 0) {
+        throw new Error("No movie recommendations found");
+      }
+  
+      // Search for each movie in TMDB
+      const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
+      const tmdbResults = await Promise.all(promiseArray);
+  
+      // Filter out empty results
+      const validResults = tmdbResults.map(results =>
+          results && results.length > 0 ? results : null
+      );
+  
+      if (validResults.every(result => result === null)) {
+        throw new Error("No movie data found for the recommendations");
+      }
+  
+      // Dispatch to Redux store
+      dispatch(
+          addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
+      );
+  
     } catch (error) {
-      console.error("Error in mock search:", error);
-      setError("An error occurred while searching for movies");
+      console.error("Error in GPT search:", error);
+      setError(error.message || "An error occurred while searching for movies");
     } finally {
       setIsLoading(false);
     }
   };
+  // const handleGptSearchClick = async () => {
+  //   // Reset any previous errors
+  //   setError(null);
+
+  //   // Check if the search text is empty
+  //   if (!searchText.current?.value?.trim()) {
+  //     setError("Please enter a search term");
+  //     return;
+  //   }
+
+  //   // Set loading state
+  //   setIsLoading(true);
+
+  //   try {
+  //     // Simulate API delay for realistic testing
+  //     await new Promise(resolve => setTimeout(resolve, 1500));
+
+  //     // Get mock data based on search query
+  //     let mockData;
+  //     const query = searchText.current.value.toLowerCase();
+
+  //     if (query.includes("action")) {
+  //       mockData = actionMovies;
+  //     } else if (query.includes("comedy")) {
+  //       mockData = comedyMovies;
+  //     } else {
+
+  //       mockData = mockMovieResults;
+  //     }
+
+
+  //     dispatch(addGptMovieResult(mockData));
+
+  //   } catch (error) {
+  //     console.error("Error in mock search:", error);
+  //     setError("An error occurred while searching for movies");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
 
   return (

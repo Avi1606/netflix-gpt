@@ -12,71 +12,16 @@ import ErrorMessage from "./ErrorMessage.jsx";
 
 const Browse = () => {
     const showgptpage = useSelector(store => store.gpt.showGptPage);
-    const [apiError, setApiError] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+    // Remove apiError and isLoading state and related logic
 
-    const handleApiError = () => {
-        setApiError(true);
-        setIsLoading(false);
-    };
-
-    useEffect(() => {
-        // Set a timeout to show error if loading takes too long
-        const timeoutId = setTimeout(() => {
-            if (isLoading) {
-                handleApiError();
-            }
-        }, 3000); // Show error after 3 seconds
-
-        // Add global error handler for fetch
-        const originalFetch = window.fetch;
-        window.fetch = async (...args) => {
-            try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout for each request
-
-                const response = await originalFetch(...args, { signal: controller.signal });
-                clearTimeout(timeoutId);
-
-                if (!response.ok) {
-                    throw new Error('API request failed');
-                }
-                return response;
-            } catch (error) {
-                if (error.name === 'AbortError') {
-                    console.log('Request timeout');
-                }
-                handleApiError();
-                throw error;
-            }
-        };
-
-        // Check if initial data is loaded
-        const checkInitialLoad = () => {
-            const movies = document.querySelector('.movie-list');
-            if (movies) {
-                setIsLoading(false);
-            }
-        };
-
-        // Check periodically for initial load
-        const checkInterval = setInterval(checkInitialLoad, 500);
-
-        return () => {
-            clearTimeout(timeoutId);
-            clearInterval(checkInterval);
-            window.fetch = originalFetch;
-        };
-    }, [isLoading]);
+    // Remove useEffect with fetch override and error handling
 
     useNowPlaying();
     usePopularMovies();
     useTopRatedMovies();
     useUpcomingMovies();
 
-    if (apiError) {
-        return <ErrorMessage />;
-    }
+    // Remove apiError check and ErrorMessage rendering
 
     return (
         <div>
