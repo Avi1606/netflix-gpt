@@ -46,7 +46,20 @@ const Header = () => {
                 navigate("/browse");
             } else {
                 dispatch(removeUser());
-                navigate("/");
+                // Check for demo mode
+                if (import.meta.env.VITE_DEMO_MODE === 'true') {
+                    // Set demo user for testing
+                    dispatch(
+                        addUser({
+                            uid: 'demo-user',
+                            email: 'demo@test.com',
+                            displayName: 'Demo User'
+                        })
+                    );
+                    navigate("/browse");
+                } else {
+                    navigate("/");
+                }
             }
         });
         return () => unsubscribe();
@@ -84,6 +97,13 @@ const Header = () => {
                             hover:bg-red-700 transition-colors"
                         >
                             {gptPage ? "Home" : "GPTSearch"}
+                        </button>
+                        <button onClick={() => navigate("/interview")}
+                                className="
+                            text-white text-xs md:text-base px-1 md:px-2 py-1 md:py-1.5 mx-1 md:mx-3 bg-blue-600 rounded-md md:rounded-2xl cursor-pointer
+                            hover:bg-blue-700 transition-colors"
+                        >
+                            Interview
                         </button>
                         <div className="relative group">
                             <div className="flex items-center gap-1 md:gap-2 cursor-pointer text-white">
