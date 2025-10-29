@@ -1,4 +1,3 @@
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -20,8 +19,19 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+// Initialize Analytics only in browser, with measurementId, and over HTTPS
+try {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+        const hasMeasurementId = !!firebaseConfig.measurementId && firebaseConfig.measurementId !== 'undefined';
+        const isHttps = typeof location !== 'undefined' ? location.protocol === 'https:' : true;
+        if (hasMeasurementId && isHttps) {
+            getAnalytics(app);
+        }
+    }
+} catch (e) {
+    // Silently ignore analytics initialization errors to avoid breaking the app in privacy-focused browsers
+    console.warn('Analytics initialization skipped:', e?.message || e);
+}
 
 export const auth = getAuth();
-
-export const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;

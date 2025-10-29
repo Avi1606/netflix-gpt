@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import languageConstants from "../Utils/languageConstants.jsx";
-import openai from "../Utils/OpenAI.jsx";
+import getMovieRecommendations from "../Utils/OpenAI.jsx";
 import { API_OPTIONS } from "../Utils/Constants.jsx";
 import { addGptMovieResult } from "../App/useGptSlice.js";
 import {actionMovies, comedyMovies, mockMovieResults} from "../Utils/mockMovieData.js";
@@ -52,20 +52,12 @@ const GptSearchBar = () => {
           searchText.current.value +
           ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
   
-      // Make OpenAI API call
-      const gptResults = await openai.chat.completions.create({
-        messages: [{ role: "user", content: gptQuery }],
-        model: "gpt-3.5-turbo",
-      });
-  
-      // Validate OpenAI response
-      if (!gptResults.choices || gptResults.choices.length === 0) {
-        throw new Error("No results returned from OpenAI");
-      }
-  
+      // Make OpenAI API call using serverless function
+      const gptMovieNames = await getMovieRecommendations(gptQuery);
+
       // Process movie names
-      const gptMovies = gptResults.choices[0]?.message?.content.split(",").map(movie => movie.trim());
-  
+      const gptMovies = gptMovieNames.split(",").map(movie => movie.trim());
+
       if (!gptMovies || gptMovies.length === 0) {
         throw new Error("No movie recommendations found");
       }
