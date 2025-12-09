@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirect all requests to index.html for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    X-XSS-Protection = "0"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://image.tmdb.org data: blob:; font-src 'self' data:; connect-src 'self' https://api.themoviedb.org https://*.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://region1.analytics.google.com https://*.google-analytics.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;"
